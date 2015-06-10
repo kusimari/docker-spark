@@ -15,5 +15,18 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" | t
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle/
 ENV PATH $JAVA_HOME/bin:$PATH
 
+## SPARK 1.3.1
+RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-1.3.1-bin-hadoop2.6.tgz | tar -xz -C /opt/
+RUN mv /opt/spark-1.3.1-bin-hadoop2.6 /opt/spark
+
+## PIP and IPYTHON
+RUN apt-get install -y python-dev
+RUN curl https://bootstrap.pypa.io/get-pip.py | python
+RUN pip install ipython[all]
+
+## BOOT script
+ADD boot.sh /etc/boot.sh
+RUN chmod +x /etc/boot.sh
+
 ### start based on type of node ##########################################################
-CMD ["/etc/bootstrap.sh"]
+CMD /etc/boot.sh
