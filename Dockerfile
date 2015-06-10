@@ -1,5 +1,3 @@
-# Creates distributed hadoop 2.6.0
-
 FROM buildpack-deps:wheezy
 MAINTAINER kusimari
 
@@ -19,7 +17,7 @@ ENV PATH $JAVA_HOME/bin:$PATH
 RUN curl http://d3kbcqa49mib13.cloudfront.net/spark-1.3.1-bin-hadoop2.6.tgz | tar -xz -C /opt/
 RUN mv /opt/spark-1.3.1-bin-hadoop2.6 /opt/spark
 
-## PIP and IPYTHON
+## PIP and IPYTHON. TODO: virutualenv?
 RUN apt-get install -y python-dev
 RUN curl https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install ipython[all]
