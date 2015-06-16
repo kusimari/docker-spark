@@ -23,8 +23,8 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python
 RUN pip install ipython[all]
 
 ## BOOT script
-ADD boot.sh /etc/boot.sh
-RUN chmod +x /etc/boot.sh
+ADD /scripts/*.sh /etc/scripts/
+RUN chmod +x /etc/scripts/*.sh
 
 ### start based on type of node ##########################################################
-CMD /etc/boot.sh
+CMD ["bash"]
