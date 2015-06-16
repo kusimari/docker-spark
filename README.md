@@ -1,6 +1,7 @@
 # docker-spark
 
 As of now a pyspark notebook for experiments.  
+
 To build locally  
 clone repo and in local repo  
 sudo docker build -t local/docker-spark:1.3.1 .
